@@ -7,10 +7,11 @@ public class ContaTerminal {
     public static void main(String[] args) {
 
         Random aleatorio = new Random();
-        int numero = aleatorio.nextInt(8);
+        int numero = aleatorio.nextInt(999999 - 100000 + 1) + 100000;
         String agencia;
         String nomeCliente;
         double saldo;
+
 
         Scanner terminal = new Scanner(System.in);
         System.out.println("Por Favor, Digite o Número da Agência! ");
@@ -24,12 +25,13 @@ public class ContaTerminal {
                 if (saldo < 0 ){
                     saldo = 0;
                 }
-                 System.out.println("Olá, " + nomeCliente +" obrigado por criar uma conta em nosso banco, sua agência é " + agencia +", conta " + numero + " e seu saldo " + saldo + " já está disponível para saque");
+                String mensagem = String.format("Olá, %s, obrigado por criar uma conta em nosso banco. Sua agência é %s, conta %d e seu saldo %.2f já está disponível para saque.", nomeCliente, agencia, numero, saldo);
+                System.out.println(mensagem);
             } else {
                 System.out.println("Nome é Obrigatório!");
             }
         } else {
             System.out.println("Agência é Obrigatório!");
-            }
+        }
     }
 }
